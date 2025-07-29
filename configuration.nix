@@ -14,8 +14,6 @@
   wsl.enable = true;
   wsl.defaultUser = "nixos";
 
-  nixpkgs.config.allowUnfree = true;
-
   # system
   environment.systemPackages =
   
