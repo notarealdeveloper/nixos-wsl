@@ -9,7 +9,7 @@
     download-buffer-size = 64*(1024*1024);
   };
 
-  imports = [ <nixos-wsl/modules> ];
+  imports = [ ];
 
   wsl.enable = true;
   wsl.defaultUser = "nixos";
