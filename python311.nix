@@ -14,25 +14,26 @@ pkgs: (
       pname = "numpy";
       version = "1.26.4";
       pyproject = true;
-      build-system = [ setuptools ];
+      build-system = [ meson-python ];
       src = fetch {
         pname = "numpy";
         version = "1.26.4";
         sha256 = "sha256-KgKrqe0S5KxOs+qUIcQgMBoMZGDZgw10qd+H76SRIBA=";
       };
-      nativeBuildInputs = [ cython ];
+      nativeBuildInputs = with pkgs; [ meson ninja cython wheel ];
     })
 
     (build {
       pname = "pandas";
       version = "1.5.3";
       pyproject = true;
-      build-system = [ setuptools ];
+      build-system = [ setuptools meson-python ];
       src = fetch {
         pname = "pandas";
         version = "1.5.3";
         sha256 = "sha256-dKP9flp+wFLxgyc9x7Cs06hj7fdSD106F2XAT/2zsLE=";
       };
+      nativeBuildInputs = with pkgs; [ meson ninja wheel ];
       propagatedBuildInputs = [ numpy cython ];
     })
 
@@ -40,13 +41,14 @@ pkgs: (
       pname = "scikit-learn";
       version = "1.4.0";
       pyproject = true;
-      build-system = [ setuptools ];
+      build-system = [ setuptools scikit-build-core ];
       src = fetch {
         pname = "scikit-learn";
         version = "1.4.0";
         sha256 = "sha256-1Dc8mE66IOOTIW7dUaPj7t5Wy+k9QkdRbSBWQ8O5MSE=";
       };
-      propagatedBuildInputs = [ numpy scipy cython ];
+      nativeBuildInputs = with pkgs; [ cmake ninja wheel ];
+      propagatedBuildInputs = [ numpy scipy joblib threadpoolctl ];
     })
 
     (build {
