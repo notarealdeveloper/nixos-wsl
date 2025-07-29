@@ -240,10 +240,6 @@ let
       # So close!
       # python-head
 
-      #python311
-
-      (import ./python311.nix pkgs)
-
     ];
 
     # users

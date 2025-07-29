@@ -8,9 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mach-nix.url = "github:DavHau/mach-nix/7e14360bde07dcae32e5e24f366c83272f52923f";
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, mach-nix, ... }:
   let
 
     system  = "x86_64-linux";
@@ -21,6 +22,20 @@
       inherit system;
       overlays = [ overlay ];
       config = { allowUnfree = true; };
+    };
+
+    mach = import mach-nix { inherit pkgs; };
+
+    pyEnv = mach.mkPython {
+      python = pkgs.python311;
+      requirements = ''
+        numpy==1.26.4
+        pandas==1.5.3
+        scikit-learn==1.4.0
+        lightgbm==4.6.0
+        tflite-runtime==2.14.0
+        lambda-multiprocessing==0.5
+      '';
     };
 
   in {
@@ -38,8 +53,8 @@
 
     };
 
-    devShells.${system}.work = pkgs.mkShell {
-      buildInputs = [ (import ./python311.nix pkgs) ];
+    devShells.${system}.default = pkgs.mkShell {
+      packages = [ pyEnv ];
     };
 
   };
