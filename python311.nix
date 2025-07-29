@@ -68,8 +68,8 @@ pkgs: (
       pyproject = true;
       build-system = [ setuptools ];
       src = fetch {
+        pname = "lambda-multiprocessing";
         version = "0.5";
-        pyproject = true;
         sha256 = "sha256-WykGJZ3SYeToDSXPCYZxZoCMv25+ERw67L7FzskmCT4=";
       };
     })
