@@ -4,7 +4,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  lib      = nixpkgs.lib;
+
   isWsl    = !builtins.isNull (builtins.getEnv "WSL_DISTRO_NAME");
   isLinux  = pkgs.stdenv.isLinux;
   isDarwin = pkgs.stdenv.isDarwin;
@@ -27,8 +27,6 @@ let
   };
 
   common = {
-
-    imports = [ ];
 
     nix.settings = {
       experimental-features = [ "nix-command" "flakes" ];
