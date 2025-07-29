@@ -18,8 +18,9 @@ pkgs: (
       src = fetch {
         pname = "numpy";
         version = "1.26.4";
-        sha256 = "sha256-+DQHyKzDJbkX8r8dDG+vDn2WcQ9RK9kIjjXksK0m/xM=";
+        sha256 = "sha256-KgKrqe0S5KxOs+qUIcQgMBoMZGDZgw10qd+H76SRIBA=";
       };
+      nativeBuildInputs = [ cython ];
     })
 
     (build {
@@ -43,15 +44,15 @@ pkgs: (
       src = fetch {
         pname = "scikit-learn";
         version = "1.4.0";
-        sha256 = "sha256-dRxMRzYr+9qLbpxC7a2bTjG+9l2lJ5XLrT9XjmsFqFE=";
+        sha256 = "sha256-1Dc8mE66IOOTIW7dUaPj7t5Wy+k9QkdRbSBWQ8O5MSE=";
       };
-      propagatedBuildInputs = [ numpy scipy ];
+      propagatedBuildInputs = [ numpy scipy cython ];
     })
 
     (build {
       pname = "lightgbm";
       version = "4.6.0";
-      pyproject = true;
+      pyproject = false;
       build-system = [ setuptools ];
       src = fetch {
         pname = "lightgbm";
