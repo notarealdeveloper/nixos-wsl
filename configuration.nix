@@ -237,6 +237,8 @@ let
 
       python314FreeThreading
 
+      python311
+
       # So close!
       # python-head
 
