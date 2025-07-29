@@ -240,9 +240,9 @@ let
       # So close!
       # python-head
 
-      python311
+      #python311
 
-      #(import ./python311.nix pkgs)
+      (import ./python311.nix pkgs)
 
     ];
 

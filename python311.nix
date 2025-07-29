@@ -16,7 +16,8 @@ pkgs: (
       pyproject = true;
       build-system = [ setuptools ];
       src = fetch {
-        inherit pname version;
+        pname = "numpy";
+        version = "1.26.4";
         sha256 = "sha256-+DQHyKzDJbkX8r8dDG+vDn2WcQ9RK9kIjjXksK0m/xM=";
       };
     })
@@ -27,7 +28,8 @@ pkgs: (
       pyproject = true;
       build-system = [ setuptools ];
       src = fetch {
-        inherit pname version;
+        pname = "pandas";
+        version = "1.5.3";
         sha256 = "sha256-dKP9flp+wFLxgyc9x7Cs06hj7fdSD106F2XAT/2zsLE=";
       };
       propagatedBuildInputs = [ numpy cython ];
@@ -39,7 +41,8 @@ pkgs: (
       pyproject = true;
       build-system = [ setuptools ];
       src = fetch {
-        inherit pname version;
+        pname = "scikit-learn";
+        version = "1.4.0";
         sha256 = "sha256-dRxMRzYr+9qLbpxC7a2bTjG+9l2lJ5XLrT9XjmsFqFE=";
       };
       propagatedBuildInputs = [ numpy scipy ];
@@ -51,7 +54,8 @@ pkgs: (
       pyproject = true;
       build-system = [ setuptools ];
       src = fetch {
-        inherit pname version;
+        pname = "lightgbm";
+        version = "4.6.0";
         sha256 = "sha256-yxxZcg61aTicC6dNFPUjUbVzr0ifIwAyocnzFPi6t/4=";
       };
       nativeBuildInputs = with pkgs; [ cmake ninja pkg-config gcc ];
@@ -64,7 +68,8 @@ pkgs: (
       pyproject = true;
       build-system = [ setuptools ];
       src = fetch {
-        inherit pname version;
+        version = "0.5";
+        pyproject = true;
         sha256 = "sha256-WykGJZ3SYeToDSXPCYZxZoCMv25+ERw67L7FzskmCT4=";
       };
     })
