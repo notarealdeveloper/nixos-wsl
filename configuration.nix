@@ -8,8 +8,10 @@ let
   isWsl    = !builtins.isNull (builtins.getEnv "WSL_DISTRO_NAME");
   isLinux  = pkgs.stdenv.isLinux;
   isDarwin = pkgs.stdenv.isDarwin;
+  isNative = isLinux && !isWsl;
 
-  linux = lib.mkIf isLinux {
+  linux = lib.mkIf isNative {
+
     # bootloader
     boot.loader.systemd-boot.enable = true;
     boot.loader.systemd-boot.configurationLimit = 5;
@@ -17,7 +19,6 @@ let
 
     # kernel
     boot.kernelPackages = pkgs.linuxPackages_latest;
-
   };
 
   wsl = lib.mkIf isWsl {
